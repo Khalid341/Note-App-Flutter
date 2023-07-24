@@ -28,6 +28,12 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  Future<void> _refreshNotes() async {
+    setState(() {
+      _notesFuture = _db.getNotes();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,28 +42,31 @@ class _HomePageState extends State<HomePage> {
           AppLocalizations.of(context)!.translate('notes') ?? 'Default Text',
         ),
       ),
-      body: FutureBuilder<List<Note>>(
-        future: _notesFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text('Error: ${snapshot.error}'),
-            );
-          } else {
-            final notes = snapshot.data ?? [];
-            return ListView.builder(
-              itemCount: notes.length,
-              itemBuilder: (context, index) {
-                final note = notes[index];
-                return NoteCard(note: note);
-              },
-            );
-          }
-        },
+      body: RefreshIndicator(
+        onRefresh: _refreshNotes,
+        child: FutureBuilder<List<Note>>(
+          future: _notesFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text('Error: ${snapshot.error}'),
+              );
+            } else {
+              final notes = snapshot.data ?? [];
+              return ListView.builder(
+                itemCount: notes.length,
+                itemBuilder: (context, index) {
+                  final note = notes[index];
+                  return NoteCard(note: note);
+                },
+              );
+            }
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
@@ -71,7 +80,6 @@ class _HomePageState extends State<HomePage> {
         },
         child: Icon(Icons.add),
       ),
-
     );
   }
 }
