@@ -1,0 +1,13 @@
+{
+  "@@locale": "en",
+  "addNote": "Add Note",
+  "editNote": "Edit Note",
+  "notes": "Notes",
+  "enterTitle": "Enter Title",
+  "pleaseEnterTitle": "Please Enter Title",
+  "enterDescription": "Enter Description",
+  "pleaseEnterDescription": "Please Enter Description",
+  "save": "Save",
+  "update": "Update",
+  "signup": "Sign Up"
+}

@@ -1,0 +1,13 @@
+{
+  "@@locale": "ar",
+  "addNote": "أضف ملاحظة",
+  "editNote": "تعديل الملاحظة",
+  "notes": "الملاحظات",
+  "enterTitle": "أدخل العنوان",
+  "pleaseEnterTitle": "الرجاء إدخال العنوان",
+  "enterDescription": "أدخل الوصف",
+  "pleaseEnterDescription": "الرجاء إدخال الوصف",
+  "save": "حفظ",
+  "update": "تحديث",
+  "signup": "تسجيل"
+}

@@ -1,0 +1,7 @@
+{
+  "@@locale": "en",
+  "title": "Note App",
+  "noteTitleLabel": "Title",
+  "noteDescriptionLabel": "Description",
+  "saveNoteButtonLabel": "Save Note"
+}
